@@ -1,0 +1,22 @@
+int bs(int searchValue, int numArray[], int arrayLength)
+{
+    int minIndex = 0, maxIndex = arrayLength - 1, meanIndex;
+    while (minIndex <= maxIndex)
+    {
+        meanIndex = (minIndex + maxIndex) / 2;
+        if (searchValue == numArray[meanIndex])
+        {
+            return meanIndex;
+        }
+        else if (searchValue < numArray[meanIndex])
+        {
+            maxIndex = meanIndex - 1;
+        }
+        else // searchValue > numArray[meanIndex]
+        {
+            minIndex = meanIndex + 1;
+        }
+    }
+    return -1; // 存在しない
+}
+
