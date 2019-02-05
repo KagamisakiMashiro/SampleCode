@@ -1,0 +1,19 @@
+void bfs(Node root)
+{
+    Queue visitNodes;
+    root.setVisited(true);
+    visitNodes.push(root);
+    while (!visitNodes.empty())
+    {
+        Node currentNode = visitNodes.pop();
+        visit(currentNode);
+        for (Node nextNode : currentNode.connectedNodes())
+        {
+            if (!nextNode.getVisited())
+            {
+                nextNode.setVisited(true);
+                visitNodes.push(nextNode);
+            }
+        }
+    }
+}
