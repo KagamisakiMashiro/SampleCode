@@ -1,0 +1,34 @@
+// 通常
+void dfs(Node root)
+{
+    Stack visitNodes;
+    root.setVisited(true);
+    visitNodes.push(root);
+    while (!visitNodes.empty())
+    {
+        Node currentNode = visitNodes.pop();
+        visit(currentNode);
+        for (Node nextNode : currentNode.connectedNodes())
+        {
+            if (!nextNode.getVisited())
+            {
+                nextNode.setVisited(true);
+                visitNodes.push(nextNode);
+            }
+        }
+    }
+}
+
+// コールスタック利用（再帰）
+void dfs(Node root)
+{
+    root.setVisited(true);
+    visit(root);
+    for (Node nextNode : root.connectedNodes())
+    {
+        if (!nextNode.getVisited())
+        {
+            dfs(nextNode);
+        }
+    }
+}
